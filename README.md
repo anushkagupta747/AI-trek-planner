@@ -85,11 +85,13 @@ Transform this into a **personalized AI travel assistant** that:
 
 ---
 
+
+## 📌 Status
+🚧 Work in progress — actively building and iterating
+
+---
+
 ## ▶️ How to Run
 
 ```bash
 python main.py
-
-
-📌 Status
-🚧 Work in progress — actively building and iterating
