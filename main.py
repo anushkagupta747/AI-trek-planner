@@ -14,28 +14,33 @@ def get_user_input():
     }
 
 def generate_packing_list(trip):
-    packing_list = []
+    packing_list = {
+        "Essentials": [],
+        "Clothing": [],
+        "Gear": []
+    }
 
-    packing_list.extend([
-        "Trekking Shoes",
+    packing_list["Essentials"].extend([
         "Backpack",
         "Water bottle",
         "First aid kit"
     ])
 
+    packing_list["Gear"].append("Trekking Boots")
+
     if trip["difficulty"].lower() in ["moderate", "hard"]:
-        packing_list.append("Trekking poles")
+        packing_list["Gear"].append("Trekking poles")
 
     if trip["duration_days"] > 4:
-        packing_list.append("extra pair of clothes")
+        packing_list["Clothing"].append("extra pair of clothes")
 
     if trip["month"].lower() in ["june", "july", "august"]:
-        packing_list.append("Rain jacket")
+        packing_list["Gear"].append("Rain jacket")
     else:
-        packing_list.append("Snow jacket")
+        packing_list["Gear"].append("Snow jacket")
 
     if trip["trek_style"].lower() == "camping":
-        packing_list.extend(["Sleeping bag", "Tent"])
+        packing_list["Essentials"].extend(["Sleeping bag", "Tent"])
     
     return packing_list
 
@@ -47,5 +52,7 @@ if __name__ == "__main__":
     packing_list = generate_packing_list(trip_details)
 
     print("\nRecommended Packing List:")
-    for item in packing_list:
-        print(f"- {item}")
+    for category, items in packing_list.items():
+        print(f"{category}:")
+        for item in items:
+            print(f"  - {item}")
